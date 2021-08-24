@@ -4,8 +4,8 @@ module.exports = [
       config: {
         visualization1: {
           clientId: process.env.CLIENT_ID, clientSecret: process.env.CLIENT_SECRET, embedId: process.env.EMBED_ID,
-          //filters: [{"column": "Region", "operator": "IN", "values": ["West"]}]
-          filters: []
+          filters: [{"column": "companyId", "operator": "IN", "values": [701]}]
+          // filters: []
         },
         visualization2: {
           clientId: process.env.CLIENT_ID, clientSecret: process.env.CLIENT_SECRET, embedId: process.env.EMBED_ID2,
@@ -30,7 +30,7 @@ module.exports = [
         visualization1: {
           clientId: process.env.CLIENT_ID, clientSecret: process.env.CLIENT_SECRET, embedId: process.env.EMBED_ID,
           //filters: [{"column": "Region", "operator": "IN", "values": ["Northeast"]}]
-          filters: []
+          filters: [{"column": "companyId", "operator": "IN", "values": [591]}]
         },
       }
     },
@@ -40,17 +40,17 @@ module.exports = [
         visualization1: {
           clientId: process.env.CLIENT_ID, clientSecret: process.env.CLIENT_SECRET, embedId: process.env.EMBED_ID,
           //filters: [{"column": "Country", "operator": "IN", "values": ["Canada"]}]
-          filters: []
+          filters: [{"column": "locationId", "operator": "IN", "values": [1041]}]
         },
       }
     },
     {
-      username: 'rachael',
+      username: 'in',
       config: {
         visualization1: {
           clientId: process.env.CLIENT_ID, clientSecret: process.env.CLIENT_SECRET, embedId: process.env.EMBED_ID, 
-          //filters: [{"column": "Country", "operator": "IN", "values": ["United States"]}]
-          filters: []
+          // filters: [{"column": "Country", "operator": "IN", "values": ["United States"]}]
+          filters: [{"column": "locationId", "operator": "IN", "values": [594]}]
         },
       }
     }

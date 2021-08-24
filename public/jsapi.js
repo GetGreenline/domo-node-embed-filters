@@ -12,6 +12,7 @@ window.addEventListener("message", e => {
     port.start();
 
     const onPortMessage = e => {
+        console.log(`port message`, port, e)
         if (e.data.method) {
             console.log(`received rpc event message with referenceId = ${referenceId} and method ${e.data.method}`);
             switch(e.data.method) {
@@ -49,6 +50,7 @@ window.addEventListener("message", e => {
 });
 
 const applyFilters = (filters = []) => {
+    console.log(`filters`, filters, ports)
     Object.values(ports).forEach(port => port.postMessage({
         id: 'setFilters123',
         jsonrpc: '2.0',
@@ -60,6 +62,7 @@ const applyFilters = (filters = []) => {
 }
 
 const form_submit = function(event) {
+    console.log(`form submit - event`, event)
     event.preventDefault();
     const columnElem = document.querySelector("#column_input");
     const valueElem = document.querySelector("#value_input");
