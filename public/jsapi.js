@@ -1,5 +1,6 @@
 const ports = {};
 
+
 // https://www.jsonrpc.org/specification
 window.addEventListener("message", e => {
     console.log('received message on window', e);
@@ -49,14 +50,36 @@ window.addEventListener("message", e => {
     ports[referenceId] = port;
 });
 
+// import moment from 'moment';
+
+const defaultDateFilter = () => {
+    const momentStartDate = moment().startOf('year').utc(false).format('MM/DD/YYYY')
+    const momentEndDate = moment().endOf('year').subtract(1, 'day').utc(false).format('MM/DD/YYYY')
+    console.log(`momentStartDate`, momentStartDate)
+    console.log(`momentEndDate`, momentEndDate)
+    const dateFilter = {
+        "column": "correctedTimezone",
+        "values": [
+            momentStartDate,
+            momentEndDate
+        ],
+        "operand": "BETWEEN"
+    }
+    return dateFilter
+}
+
+
 const applyFilters = (filters = []) => {
+    
+    const newFilters = [defaultDateFilter(), ...filters]
+    console.log(`newFitlers`, newFilters)
     console.log(`filters`, filters, ports)
     Object.values(ports).forEach(port => port.postMessage({
         id: 'setFilters123',
         jsonrpc: '2.0',
         method: '/v1/filters/apply',
         params: {
-            filters
+            filters: newFilters
         }
     }));
 }
